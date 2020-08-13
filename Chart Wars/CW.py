@@ -1,6 +1,12 @@
-class Band:
-    def __init__(self, members, label, ability, popularity, image, tour, tour_dates):
-        self.members = members
+from tkinter import *
+
+root = Tk()
+
+welcome = Label(root, text="Welcome to Chart Wars", fg='white', bg='black')
+welcome.pack()
+
+root.mainloop()
+
     
 
 

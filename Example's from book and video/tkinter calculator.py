@@ -21,7 +21,60 @@ def button_click(number):
 def clear():
     e.delete(0, END)
 
-#create each button for calc
+def equal():
+    second_number = e.get()
+    e.delete(0, END)
+    #make sure 2nd number is int
+    #don't need a global only button_equal will need to use it
+    if math == 'addition':
+        e.insert(0, f_num + int(second_number))
+    elif math =='subtraction':
+        e.insert(0, f_num - int(second_number))
+    elif math == 'multiplication':
+        e.insert(0, f_num * int(second_number))
+    elif math == 'division':
+        e.insert(0, f_num / int(second_number))
+
+
+    #create function to get first integer entered
+def add():
+    first_number = e.get()
+    #saving int as global allows it to be used be the equal function to get the first number to add to the second
+    global f_num
+    #create global math variable
+    global math
+    math = 'addition'
+    f_num = int(first_number)
+    e.delete(0, END)
+
+def subtract():
+    first_number = e.get()
+    global f_num
+    global math
+    math = 'subtraction'
+    f_num = int(first_number)
+    e.delete(0, END)
+
+def multiply():
+    first_number = e.get()
+    global f_num
+    global math
+    math = 'multiplication'
+    f_num = int(first_number)
+    e.delete(0, END)
+def divide():
+    first_number = e.get()
+    global f_num
+    global math
+    math = 'division'
+    f_num = int(first_number)
+    e.delete(0, END)
+
+
+    
+
+#create number buttons
+#when calling a function with tkinter(all GUI?) do not need to add "()" at the end
 button1 = Button(root, text='1', padx=35, pady=19, command=lambda:button_click(1))
 button2 = Button(root, text='2', padx=35, pady=19, command=lambda:button_click(2))
 button3 = Button(root, text='3', padx=35, pady=19, command=lambda:button_click(3))
@@ -32,9 +85,14 @@ button7 = Button(root, text='7', padx=35, pady=19, command=lambda:button_click(7
 button8 = Button(root, text='8', padx=35, pady=19, command=lambda:button_click(8))
 button9 = Button(root, text='9', padx=35, pady=19, command=lambda:button_click(9))
 button0 = Button(root, text='0', padx=35, pady=19, command=lambda:button_click(0))
-clearButton = Button(root, text='C', padx=75, pady=19, command=lambda:clear())
-equalsButton =Button(root, text='=', padx=75, pady=19, command=lambda:button_click())
-addButton = Button(root, text='+', padx=34, pady=19, command=lambda:button_click())
+#operator buttons
+#when calling a function with tkinter(all GUI?) do not need to add "()" at the end
+clearButton = Button(root, text='C', padx=77, pady=19, command=clear)
+equalsButton =Button(root, text='=', padx=77, pady=19, command=equal)
+addButton = Button(root, text='+', padx=34, pady=19, command=add)
+subtractButton = Button(root, text='-', padx=35, pady=19, command=subtract)
+multiplyButton = Button(root, text='*', padx=35, pady=19, command=multiply)
+divideButton = Button(root, text='/', padx=36, pady=19, command=divide)
 #place buttons on screen
 button1.grid(row=3, column=0)
 button2.grid(row=3, column=1)
@@ -57,4 +115,7 @@ clearButton.grid(row=4, column=1, columnspan=2)
 addButton.grid(row=5, column=0)
 equalsButton.grid(row=5, column=1, columnspan=2)
 
+subtractButton.grid(row=6, column=0)
+multiplyButton.grid(row=6, column=1)
+divideButton.grid(row=6, column=2)
 root.mainloop()

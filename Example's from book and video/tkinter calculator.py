@@ -1,4 +1,5 @@
 from tkinter import *
+import math
 
 root = Tk()
 #.title changes the top bars name. i.e. firefox, winamp etc.
@@ -26,49 +27,66 @@ def equal():
     e.delete(0, END)
     #make sure 2nd number is int
     #don't need a global only button_equal will need to use it
-    if math == 'addition':
+    if Tmath == 'addition':
         e.insert(0, f_num + int(second_number))
-    elif math =='subtraction':
+    elif Tmath =='subtraction':
         e.insert(0, f_num - int(second_number))
-    elif math == 'multiplication':
+    elif Tmath == 'multiplication':
         e.insert(0, f_num * int(second_number))
-    elif math == 'division':
+    elif Tmath == 'division':
         e.insert(0, f_num / int(second_number))
+    elif Tmath == 'exponent':
+        e.insert(0, f_num ** int(second_number))
 
-
-    #create function to get first integer entered
+#create function to get first integer entered
 def add():
     first_number = e.get()
     #saving int as global allows it to be used be the equal function to get the first number to add to the second
     global f_num
     #create global math variable
-    global math
-    math = 'addition'
+    global Tmath
+    Tmath = 'addition'
     f_num = int(first_number)
     e.delete(0, END)
 
 def subtract():
     first_number = e.get()
     global f_num
-    global math
-    math = 'subtraction'
+    global Tmath
+    Tmath = 'subtraction'
     f_num = int(first_number)
     e.delete(0, END)
 
 def multiply():
     first_number = e.get()
     global f_num
-    global math
-    math = 'multiplication'
+    global Tmath
+    Tmath = 'multiplication'
     f_num = int(first_number)
     e.delete(0, END)
 def divide():
     first_number = e.get()
     global f_num
-    global math
-    math = 'division'
+    global Tmath
+    Tmath = 'division'
     f_num = int(first_number)
     e.delete(0, END)
+
+def exponent():
+    first_number = e.get()
+    global f_num
+    global Tmath
+    Tmath = 'exponent'
+    f_num = int(first_number)
+    e.delete(0, END)
+def squareRoot():
+    first_number = e.get()
+    global f_num
+    global Tmath
+    Tmath = 'square root'
+    f_num = int(first_number)
+    e.delete(0, END)
+    e.insert(0, math.sqrt(f_num))
 
 
     
@@ -93,6 +111,8 @@ addButton = Button(root, text='+', padx=34, pady=19, command=add)
 subtractButton = Button(root, text='-', padx=35, pady=19, command=subtract)
 multiplyButton = Button(root, text='*', padx=35, pady=19, command=multiply)
 divideButton = Button(root, text='/', padx=36, pady=19, command=divide)
+exponentButton = Button(root, text='^', padx=35, pady = 19, command=exponent)
+sqrtButton = Button(root, text = '√', padx=35, pady = 19, command=squareRoot)
 #place buttons on screen
 button1.grid(row=3, column=0)
 button2.grid(row=3, column=1)
@@ -118,4 +138,7 @@ equalsButton.grid(row=5, column=1, columnspan=2)
 subtractButton.grid(row=6, column=0)
 multiplyButton.grid(row=6, column=1)
 divideButton.grid(row=6, column=2)
+
+exponentButton.grid(row=7, column=0)
+sqrtButton.grid(row=7, column=1)
 root.mainloop()
